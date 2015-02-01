@@ -9,18 +9,16 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä	
-      self::render_view('helloworld.html');
+      $questions = Question::find(1);
+
+      print_r($questions);
+
+      //self::render_view('helloworld.html');
     }
 
     public static function home(){
     	self::render_view('home.html');
     }
 
-    public static function signin(){
-    	self::render_view('kirjautuminen.html');
-    }
 
-    public static function newquestion(){
-    	self::render_view('uuskys.html');
-    }
   }
