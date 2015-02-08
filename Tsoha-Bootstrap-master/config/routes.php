@@ -13,7 +13,11 @@ $app->get('/create', function() {
 });
 
 $app->get('/signin', function() {
-    QuestionController::signin();
+    UserController::signin();
+});
+
+$app->post('/signin', function() {
+    UserController::handle_signin();
 });
 
 $app->get('/add', function() {

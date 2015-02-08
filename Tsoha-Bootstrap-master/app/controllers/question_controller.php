@@ -7,9 +7,9 @@ class QuestionController extends BaseController {
         self::render_view('etusivu.html', array('questions' => $questions));
     }
 
-    public static function signin() {
-        self::render_view('kirjautuminen.html');
-    }
+//    public static function signin() {
+//        self::render_view('kirjautuminen.html');
+//    }
 
     public static function create() {
         self::render_view('uusikysymys.html');
