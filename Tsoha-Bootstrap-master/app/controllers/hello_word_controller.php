@@ -2,10 +2,10 @@
 
   class HelloWorldController extends BaseController{
 
-    public static function index(){
-   	  // echo 'Tämä on etusivu';
-    	self::render_view('etusivu.html');
-    }
+//    public static function index(){
+//   	  // echo 'Tämä on etusivu';
+//    	self::render_view('etusivu.html');
+//    }
 
     public static function sandbox(){
       // Testaa koodiasi täällä	

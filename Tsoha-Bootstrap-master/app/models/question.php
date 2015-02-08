@@ -5,6 +5,8 @@ class Question extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
+                
+                $this->validators = array('validate_topic', 'validate_description');
 	}
 
 	public static function all(){
@@ -46,9 +48,33 @@ class Question extends BaseModel{
 	}
 
 	public static function create($array) {
-		$topic => $array['topic'];
-		$description => $array['description'];
+		$topic = $array['topic'];
+		$description = $array['description'];
 
-		return DB::query("INSERT INTO Question (topic, description) VALUES ('topic', 'description') RETURNING id");
+		$row = DB::query("INSERT INTO Question (topic, description) VALUES (:topic, :description) RETURNING id", array('topic' => $topic, 'description' => $description)); return $row[0]['id'];
 	}
+        
+        public function validate_topic() {
+            $errors = array();
+            
+            if ($this->topic == '' || $this->topic == null) {
+                $errors[] = 'Aihe ei saa olla tyhjä';
+            }
+            
+            if (strlen($this->topic) < 3) {
+                $errors[] = 'Aiheen pitää olla vähintään kolme merkkiä';
+            }
+            
+            return $errors;
+        }
+        
+        public function validate_description() {
+            $errors = array();
+            
+            if($this->description == '' || $this->description == null) {
+                $errors[] = 'Kuvaus ei saa olla tyhjä';
+            }
+
+            return $errors;
+        }
 }
