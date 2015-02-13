@@ -31,18 +31,19 @@ class QuestionController extends BaseController {
             
             self::redirect_to('/', array('message' => 'Uusi kysymys lisätty'));
         } else {
-            self::render_view('/create', array('attributes' => $attributes));
+            self::render_view('uusikysymys.html', array('question' => $attributes, 'errors' => $errors));
         }
     }
 
     public static function find($id) {
-        self::render_view('kysymys.html', array(Question::find($id)));
+        $question = Question::find($id);
+        self::render_view('kysymys.html', array('question' => $question));
     }
 
-    public static function edit($id) {
+    public static function show($id) {
         $question = Question::find($id);
         
-        self::render_view('question/edit.html', array('attributes' => $question));
+        self::render_view('kysymys.html', array('question' => $question));
     }
     
     public static function update($id) {
@@ -57,17 +58,18 @@ class QuestionController extends BaseController {
         $errors = $question->errors();
         
         if (count($errors) > 0) {
-            self::render_view('question/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+            self::render_view('kysymys.html', array('errors' => $errors, 'question' => $attributes));
         } else {
             Question::update($id, $attributes);
             
-            redirect_to('/', array('message' => 'Kysymystä muokattu onnistuneesti!'));
+            self::redirect_to('/', array('message' => 'Kysymystä muokattu'));
         }
     }
     
-    public static function destroy($id) {
-        Question::destroy($id);
+    public static function delete($id) {
+        Question::delete($id);
         
-        self::redirect_to('/', array('message' => 'Kysymys poistettu.'));
+//        self::render_view('etusivu.html', array('message' => 'Kysymys poistettu'));
+        self::redirect_to('/', array('message' => 'Kysymys ' . ($id) . ' poistettu.'));
     }
 }

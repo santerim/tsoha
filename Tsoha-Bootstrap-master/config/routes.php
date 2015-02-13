@@ -4,7 +4,7 @@ $app->get('/', function() {
     QuestionController::index();
 });
 
-$app->get('/find/:id', function() {
+$app->get('/find/:id', function($id) {
     QuestionController::find($id);
 });
 
@@ -20,20 +20,20 @@ $app->post('/signin', function() {
     UserController::handle_signin();
 });
 
-$app->get('/add', function() {
+$app->post('/add', function() {
     QuestionController::store();
 });
 
-$app->get('/question/:id/edit', function() {
-    QuestionController::edit($id);
+$app->get('/question/:id/edit', function($id) {
+    QuestionController::show($id);
 });
     
-$app->post('/question/:id/edit', function() {
+$app->post('/question/:id/update', function($id) {
     QuestionController::update($id);
 });
 
-$app->post('/question/:id/destroy', function() {
-    QuestionController::destroy($id);
+$app->get('/question/:id/delete', function($id) {
+    QuestionController::delete($id);
 });
 
 $app->get('/hiekkalaatikko', function() {

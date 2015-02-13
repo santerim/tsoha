@@ -4,7 +4,7 @@
 
 {% if message is not null %}
 <div class="alert alert-success">
-{{message}}
+    {{message}}
 </div>
 {% endif %}
 
@@ -12,18 +12,33 @@
 <br>
 
 <p>
-	<a href="{{base_path}}/create" class="btn btn-success">Lisää uusi kysymys</a>
+    <a href="{{base_path}}/create" class="btn btn-success">Lisää uusi kysymys</a>
 </p>
 <br>
 
 {% for question in questions %}
-	<table class="table table-striped table-bordered">
-		<tr><td style="width:15%">Aihe</td><td>{{question.topic}}</td></tr>
-		<tr><td style="width:15%">Kysymys</td><td>{{question.description}}</td></tr>
-		{% if question.answered %}
-		<tr><td style="width:15%">Vastaus</td><td>{{question.answer}}</td></tr>
-		{% endif %}
-	</table>
+<table class="table table-striped table-bordered" style="margin-bottom: 5px">
+    <tr><td style="width:15%">Aihe</td>
+        <td>{{question.topic}}</td>
+    </tr>
+
+    <tr><td style="width:15%">Kysymys</td>
+        <td>{{question.description}}</td>
+    </tr>
+
+    {% if question.answered %}
+    <tr>
+        <td style="width:15%">Vastaus</td><td>{{question.answer}}</td>
+    </tr>
+    {% endif %}
+</table>
+<div class="text-right">
+    <a class="btn btn-danger" href="{{base_path}}/question/{{question.id}}/delete" role="button">Delete</a>
+    <a class="btn btn-info" href="{{base_path}}/question/{{question.id}}/edit" role="button">Edit</a>
+    <!--<a class="btn btn-info" href="{{base.path}}" role="button">Testi</a>-->
+</div>
+<br>
+
 {% endfor %}
 
 {% endblock %}

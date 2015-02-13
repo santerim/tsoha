@@ -27,6 +27,13 @@ class Question extends BaseModel{
 		return $questions;
 	}
 
+        public static function update($id, $attributes) {
+            $topic = $attributes['topic'];
+            $description = $attributes['description'];
+            
+            DB::query("UPDATE Question SET topic = :topic, description = :description WHERE id = :id");
+        }
+        
 	public static function find($id){
 		$rows = DB::query('SELECT * FROM Question WHERE id = :id LIMIT 1', array('id' => $id));
 
@@ -46,6 +53,10 @@ class Question extends BaseModel{
 		}
 		return null;
 	}
+        
+        public static function delete($id) {
+            DB::query('DELETE FROM Question WHERE id = :id', array('id' => $id));
+        }
 
 	public static function create($array) {
 		$topic = $array['topic'];
@@ -72,7 +83,7 @@ class Question extends BaseModel{
             $errors = array();
             
             if($this->description == '' || $this->description == null) {
-                $errors[] = 'Kuvaus ei saa olla tyhjä';
+                $errors[] = 'Kuvaus ei voi olla tyhjä';
             }
 
             return $errors;
