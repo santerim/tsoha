@@ -69,7 +69,6 @@ class QuestionController extends BaseController {
     public static function delete($id) {
         Question::delete($id);
         
-//        self::render_view('etusivu.html', array('message' => 'Kysymys poistettu'));
         self::redirect_to('/', array('message' => 'Kysymys ' . ($id) . ' poistettu.'));
     }
 }

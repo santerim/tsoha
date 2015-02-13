@@ -31,7 +31,7 @@ class Question extends BaseModel{
             $topic = $attributes['topic'];
             $description = $attributes['description'];
             
-            DB::query("UPDATE Question SET topic = :topic, description = :description WHERE id = :id");
+            DB::query("UPDATE Question SET topic = :topic, description = :description WHERE id = :id", array('id' => $id, 'topic' => $topic, 'description' => $description));
         }
         
 	public static function find($id){
