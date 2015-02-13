@@ -30,8 +30,10 @@ class Question extends BaseModel{
         public static function update($id, $attributes) {
             $topic = $attributes['topic'];
             $description = $attributes['description'];
+            $answer = $attributes['answer'];
+            $answered = $attributes['answered'];
             
-            DB::query("UPDATE Question SET topic = :topic, description = :description WHERE id = :id", array('id' => $id, 'topic' => $topic, 'description' => $description));
+            DB::query("UPDATE Question SET topic = :topic, description = :description, answer = :answer, answered = :answered WHERE id = :id", array('id' => $id, 'topic' => $topic, 'description' => $description, 'answer' => $answer, 'answered' => $answered));
         }
         
 	public static function find($id){
@@ -61,8 +63,9 @@ class Question extends BaseModel{
 	public static function create($array) {
 		$topic = $array['topic'];
 		$description = $array['description'];
+                $added = $array['added'];
 
-		$row = DB::query("INSERT INTO Question (topic, description) VALUES (:topic, :description) RETURNING id", array('topic' => $topic, 'description' => $description)); return $row[0]['id'];
+		$row = DB::query("INSERT INTO Question (topic, description, added) VALUES (:topic, :description, :added) RETURNING id", array('topic' => $topic, 'description' => $description, 'added' => $added)); return $row[0]['id'];
 	}
         
         public function validate_topic() {

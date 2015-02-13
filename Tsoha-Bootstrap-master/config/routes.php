@@ -12,12 +12,12 @@ $app->get('/create', function() {
     QuestionController::create();
 });
 
-$app->get('/signin', function() {
-    UserController::signin();
+$app->get('/login', function() {
+    UserController::login();
 });
 
-$app->post('/signin', function() {
-    UserController::handle_signin();
+$app->post('/login', function() {
+    UserController::handle_login();
 });
 
 $app->post('/add', function() {

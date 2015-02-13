@@ -3,21 +3,21 @@
 
 class UserController extends BaseController {
     
-    public static function signin() {
+    public static function login() {
         self::render_view('kirjautuminen.html');
     }
     
-    public static function handle_signin() {
+    public static function handle_login() {
         $params = $_POST;
         
         $user = User::authenticate($params['username'], $params['password']);
         
         if(!$user){
-            self::redirect_to('/signin', array('error' => 'Väärä käyttäjätunnus tai salasana'));
+            self::redirect_to('/login', array('error' => 'Väärä käyttäjätunnus tai salasana'));
         } else {
             $_SESSION['user'] = $user->id;
             
-            self::redirect_to('/', array('message' => 'Tervetuloa takaisin' . $user->name . '!'));
+            self::redirect_to('/', array('message' => 'Tervetuloa, ' . $user->name . '!'));
         }
     }
 }
