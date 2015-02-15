@@ -2,19 +2,25 @@
 
 {% block content %}
 
+{% if error is not null %}
+<div class="alert alert-warning">
+    {{error}}
+</div>
+{% endif %}
+
 <h2>Kirjautuminen</h2>
 <br>
 <form method="post" action="{{base_path}}/login">
-	<div class="form-group" style="width:40%">
-		<label>Käyttäjätunnus</label>
-		<input type="text" class="form-control" id="username">
-	</div>
+    <div class="form-group" style="width:40%">
+        <label>Käyttäjätunnus</label>
+        <input type="text" class="form-control" id="username" name="username">
+    </div>
 
-	<div class="form-group" style="width:40%">
-		<label>Salasana</label>
-		<input type="password" class="form-control" id="password">
-	</div>
+    <div class="form-group" style="width:40%">
+        <label>Salasana</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
 
-	<button type="submit" class="btn btn-primary">Kirjaudu</button>
+    <button type="submit" class="btn btn-primary">Kirjaudu</button>
 </form>
 {% endblock %}

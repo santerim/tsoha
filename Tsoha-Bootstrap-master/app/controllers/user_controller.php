@@ -1,6 +1,5 @@
 <?php
 
-
 class UserController extends BaseController {
     
     public static function login() {
@@ -17,7 +16,7 @@ class UserController extends BaseController {
         } else {
             $_SESSION['user'] = $user->id;
             
-            self::redirect_to('/', array('message' => 'Tervetuloa, ' . $user->name . '!'));
+            self::redirect_to('/', array('message' => 'Tervetuloa, ' . $user->username . '!'));
         }
     }
 }
