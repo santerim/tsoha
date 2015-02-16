@@ -9,10 +9,14 @@ class User extends BaseModel {
     }
 
     public static function authenticate($username, $password) {
-//        $username = $params['username'];
-//        $password = $params['password'];
 
-        $rows = DB::query('SELECT * FROM user_table WHERE username = :username AND password = :password LIMIT 1', array('username' => $username, 'password' => $password));
+        $rows = DB::query('SELECT * FROM user_table '
+                . 'WHERE username = :username '
+                . 'AND password = :password '
+                . 'LIMIT 1', 
+                array(
+                    'username' => $username, 
+                    'password' => $password));
         
         if (count($rows) > 0) {
             $row = $rows[0];

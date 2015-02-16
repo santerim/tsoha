@@ -21,7 +21,7 @@ $app->post('/login', function() {
 });
 
 $app->get('/logout', function() {
-UserController::logout();
+    UserController::logout();
 });
 
 $app->post('/add', function() {
@@ -31,7 +31,7 @@ $app->post('/add', function() {
 $app->get('/question/:id/edit', function($id) {
     QuestionController::show($id);
 });
-    
+
 $app->post('/question/:id/update', function($id) {
     QuestionController::update($id);
 });

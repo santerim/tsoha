@@ -11,7 +11,7 @@ class Question extends BaseModel{
 
 	public static function all(){
 		$questions = array();
-		$rows = DB::query('SELECT * FROM Question ORDER BY added');
+		$rows = DB::query('SELECT * FROM Question ORDER BY added DESC');
 
 		foreach ($rows as $row) {
 			$questions[] = new Question(array(
@@ -33,13 +33,15 @@ class Question extends BaseModel{
             $answer = $attributes['answer'];
             $answered = $attributes['answered'];
             $user_id = $attributes['user_id'];
+            $modified = $attributes['modified'];
             
             DB::query("UPDATE Question SET "
                     . "user_id = :user_id, "
                     . "topic = :topic, "
                     . "description = :description, "
                     . "answer = :answer, "
-                    . "answered = :answered "
+                    . "answered = :answered, "
+                    . "modified = :modified "
                     . "WHERE id = :id", 
                     array(
                         'id' => $id,
@@ -47,7 +49,8 @@ class Question extends BaseModel{
                         'topic' => $topic, 
                         'description' => $description, 
                         'answer' => $answer, 
-                        'answered' => $answered));
+                        'answered' => $answered,
+                        'modified' => $modified));
         }
         
 	public static function find($id){

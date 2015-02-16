@@ -17,7 +17,7 @@ class QuestionController extends BaseController {
         $attributes = array(
             'topic' => $params['topic'],
             'description' => $params['description'],
-            'added' => date('Y/m/d')
+            'added' => date('Y-m-d H:i:s')
         );
 
         $question = new Question($attributes);
@@ -52,7 +52,7 @@ class QuestionController extends BaseController {
                 'description' => $params['description'],
                 'answer' => $params['answer'],
                 'answered' => true,
-                'modified' => date('Y/m/d'),
+                'modified' => date('Y-m-d H:i:s'),
                 'user_id' => $_SESSION['user']
             );
         }

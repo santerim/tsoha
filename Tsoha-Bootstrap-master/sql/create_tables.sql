@@ -13,6 +13,6 @@ CREATE TABLE Question(
 	description varchar(400),
 	answer varchar(400),
 	answered BOOLEAN,
-	added DATE,
-        modified DATE
+	added TIMESTAMP,
+        modified TIMESTAMP
 );
