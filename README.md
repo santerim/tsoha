@@ -7,7 +7,7 @@ Sovellus:
 http://santerim.users.cs.helsinki.fi/tsoha/
 
 Kirjautuminen:
-http://santerim.users.cs.helsinki.fi/tsoha/signin
+http://santerim.users.cs.helsinki.fi/tsoha/login
 
 Dokumentaatio:
 https://github.com/santerim/tsoha/blob/master/doc/dokumentaatio.pdf
