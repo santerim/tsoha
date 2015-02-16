@@ -7,10 +7,6 @@ class QuestionController extends BaseController {
         self::render_view('etusivu.html', array('questions' => $questions));
     }
 
-//    public static function signin() {
-//        self::render_view('kirjautuminen.html');
-//    }
-
     public static function create() {
         self::render_view('uusikysymys.html');
     }
@@ -21,7 +17,7 @@ class QuestionController extends BaseController {
         $attributes = array(
             'topic' => $params['topic'],
             'description' => $params['description'],
-            'added' => date('Y-m-d')
+            'added' => date('Y/m/d')
         );
 
         $question = new Question($attributes);
@@ -55,10 +51,11 @@ class QuestionController extends BaseController {
                 'topic' => $params['topic'],
                 'description' => $params['description'],
                 'answer' => $params['answer'],
-                'answered' => true
+                'answered' => true,
+                'modified' => date('Y/m/d'),
+                'user_id' => $_SESSION['user']
             );
         }
-
 
         $question = new Question($attributes);
         $errors = $question->errors();

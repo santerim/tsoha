@@ -1,7 +1,7 @@
 <?php
 
 class Question extends BaseModel{
-	public $id, $user_id, $topic, $description, $answer, $answered, $added;
+	public $id, $user_id, $topic, $description, $answer, $answered, $added, $modified;
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
@@ -32,15 +32,18 @@ class Question extends BaseModel{
             $description = $attributes['description'];
             $answer = $attributes['answer'];
             $answered = $attributes['answered'];
+            $user_id = $attributes['user_id'];
             
             DB::query("UPDATE Question SET "
+                    . "user_id = :user_id, "
                     . "topic = :topic, "
                     . "description = :description, "
                     . "answer = :answer, "
                     . "answered = :answered "
                     . "WHERE id = :id", 
                     array(
-                        'id' => $id, 
+                        'id' => $id,
+                        'user_id' => $user_id,
                         'topic' => $topic, 
                         'description' => $description, 
                         'answer' => $answer, 

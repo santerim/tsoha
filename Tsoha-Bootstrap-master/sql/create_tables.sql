@@ -2,7 +2,8 @@
 CREATE TABLE User_table(
 	id SERIAL PRIMARY KEY,
 	username varchar(50) NOT NULL,
-	password varchar(50) NOT NULL
+	password varchar(50) NOT NULL,
+        joined DATE
 );
 
 CREATE TABLE Question(
@@ -12,7 +13,6 @@ CREATE TABLE Question(
 	description varchar(400),
 	answer varchar(400),
 	answered BOOLEAN,
-        answerer varchar(100),
 	added DATE,
         modified DATE
 );
