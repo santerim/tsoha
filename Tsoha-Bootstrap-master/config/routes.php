@@ -20,6 +20,10 @@ $app->post('/login', function() {
     UserController::handle_login();
 });
 
+$app->get('/logout', function() {
+UserController::logout();
+});
+
 $app->post('/add', function() {
     QuestionController::store();
 });

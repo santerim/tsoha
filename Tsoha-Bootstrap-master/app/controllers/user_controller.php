@@ -6,6 +6,12 @@ class UserController extends BaseController {
         self::render_view('kirjautuminen.html');
     }
     
+    public static function logout() {
+        $_SESSION['user'] = null;
+        
+        self::redirect_to('/', array('message' => 'Olet kirjautunut ulos'));
+    }
+    
     public static function handle_login() {
         $params = $_POST;
         

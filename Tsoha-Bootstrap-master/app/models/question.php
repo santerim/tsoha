@@ -11,7 +11,7 @@ class Question extends BaseModel{
 
 	public static function all(){
 		$questions = array();
-		$rows = DB::query('SELECT * FROM Question');
+		$rows = DB::query('SELECT * FROM Question ORDER BY added');
 
 		foreach ($rows as $row) {
 			$questions[] = new Question(array(
