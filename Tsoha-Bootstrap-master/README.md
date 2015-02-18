@@ -1,10 +1,13 @@
-# Tietokantasovelluksen esittelysivu
- 
-Yleisiä linkkejä:
+# tsoha
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+Aihe: Usein kysytyt kysymykset
+http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html
 
-## Työn aihe
+Sovellus:
+http://santerim.users.cs.helsinki.fi/tsoha/
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Kirjautuminen:
+http://santerim.users.cs.helsinki.fi/tsoha/login
+
+Dokumentaatio:
+https://github.com/santerim/tsoha/blob/master/doc/dokumentaatio.pdf
