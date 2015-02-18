@@ -2,10 +2,32 @@
 
 class User extends BaseModel {
 
-    public $id, $username, $password;
+    public $id, $username, $password, $joined;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+    }
+    
+    public static function checkDuplicate($username) {
+        $result = DB::query('SELECT * FROM user_table WHERE username = :username', array('username' => $username));
+        
+        if ($result) {
+            return true;
+        }
+        return false;
+    }
+    
+    public static function newUser($attributes) {
+        $username = $attributes['username'];
+        $password = $attributes['password'];
+        $joined = $attributes['joined'];
+        
+        $id = DB::query('INSERT INTO user_table (username, password, joined) '
+                . 'VALUES (:username, :password, :joined) RETURNING id', 
+                array(
+                    'username' => $username, 'password' => $password, 'joined' => $joined));
+        
+        return $id[0]['id'];
     }
 
     public static function authenticate($username, $password) {

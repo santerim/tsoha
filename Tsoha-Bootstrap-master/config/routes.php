@@ -12,6 +12,14 @@ $app->get('/create', function() {
     QuestionController::create();
 });
 
+$app->get('/signup', function() {
+    UserController::signup();
+});
+
+$app->post('/signup', function() {
+    UserController::handle_signup();
+});
+
 $app->get('/login', function() {
     UserController::login();
 });
