@@ -11,8 +11,16 @@ CREATE TABLE Question(
 	user_id INTEGER REFERENCES User_table(id),
 	topic varchar(50) NOT NULL,
 	description varchar(400),
-	answer varchar(400),
 	answered BOOLEAN,
 	added TIMESTAMP,
+        modified TIMESTAMP
+);
+
+CREATE TABLE Answer(
+        id SERIAL PRIMARY KEY,
+        question_id INTEGER REFERENCES Question(id),
+        user_id INTEGER REFERENCES User_table(id),
+        content varchar(400),
+        added TIMESTAMP,
         modified TIMESTAMP
 );

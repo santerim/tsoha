@@ -5,8 +5,7 @@
 			"vendor/Slim/Slim.php",
 			"vendor/Twig/lib/Twig/Autoloader.php",
 			"app/controllers",
-			"app/models/question.php",
-			"app/models/user.php"
+			"app/models/"
 		]
 	}
 }

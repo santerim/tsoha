@@ -7,7 +7,9 @@
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/app/views/kysymys.html</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/lib/base_model.php</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/sql/add_test_data.sql</file>
+            <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/index.php</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/app/controllers/user_controller.php</file>
+            <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/lib/base_controller.php</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/app/views/base.html</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/app/views/etusivu.html</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/sql/create_tables.sql</file>
@@ -15,7 +17,6 @@
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/app/controllers/question_controller.php</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/app/models/question.php</file>
             <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/config/routes.php</file>
-            <file>file:/home/santeri/tsoha/tsoha/Tsoha-Bootstrap-master/app/views/uusikysymys.html</file>
         </group>
     </open-files>
 </project-private>

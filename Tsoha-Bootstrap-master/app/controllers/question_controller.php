@@ -2,15 +2,18 @@
 
 class QuestionController extends BaseController {
 
+    // näyttää etusivun
     public static function index() {
         $questions = Question::all();
         self::render_view('etusivu.html', array('questions' => $questions));
     }
 
+    // ohjaa uuden kysymyksen luomissivulle
     public static function create() {
         self::render_view('uusikysymys.html');
     }
 
+    // uutta kysymystä luotaessa
     public static function store() {
         $params = $_POST;
 
@@ -32,17 +35,15 @@ class QuestionController extends BaseController {
         }
     }
 
-    public static function find($id) {
-        $question = Question::find($id);
-        self::render_view('kysymys.html', array('question' => $question));
-    }
-
+    // edit-nappula tuo tähän. Näyttää kysymyssivun, jossa kysymystä voi muokata
+    // ja antaa sille vastauksen
     public static function show($id) {
         $question = Question::find($id);
 
         self::render_view('kysymys.html', array('question' => $question));
     }
 
+    // tätä kutsutaan kun muokataan jo olemassaolevaa kysymystä
     public static function update($id) {
         $params = $_POST;
 
@@ -52,6 +53,15 @@ class QuestionController extends BaseController {
                 'description' => $params['description'],
                 'answer' => $params['answer'],
                 'answered' => true,
+                'modified' => date('Y-m-d H:i:s'),
+                'user_id' => $_SESSION['user']
+            );
+        } else {
+            $attributes = array(
+                'topic' => $params['topic'],
+                'description' => $params['description'],
+                'answer' => null,
+                'answered' => false,
                 'modified' => date('Y-m-d H:i:s'),
                 'user_id' => $_SESSION['user']
             );
@@ -69,10 +79,11 @@ class QuestionController extends BaseController {
         }
     }
 
+    // kun painetaan delete-nappia
     public static function delete($id) {
         Question::delete($id);
 
-        self::redirect_to('/', array('message' => 'Kysymys ' . ($id) . ' poistettu.'));
+        self::redirect_to('/', array('message' => 'Kysymys poistettu'));
     }
 
 }
