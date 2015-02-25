@@ -10,7 +10,8 @@ class QuestionController extends BaseController {
 
     // ohjaa uuden kysymyksen luomissivulle
     public static function create() {
-        self::render_view('uusikysymys.html');
+        $topics = Question::getTopics();
+        self::render_view('uusikysymys.html', array('topics' => $topics));
     }
 
     // uutta kysymystä luotaessa
@@ -31,7 +32,8 @@ class QuestionController extends BaseController {
 
             self::redirect_to('/', array('message' => 'Uusi kysymys lisätty'));
         } else {
-            self::render_view('uusikysymys.html', array('question' => $attributes, 'errors' => $errors));
+            $topics = Question::getTopics();
+            self::render_view('uusikysymys.html', array('question' => $attributes, 'errors' => $errors, 'topics' => $topics));
         }
     }
 

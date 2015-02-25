@@ -97,6 +97,12 @@ class Question extends BaseModel{
             }
         }
         
+        public static function getTopics() {
+//            return DB::query("SELECT enumlabel FROM pg_enum WHERE enumtypid = 'questiontopic'::regtype");
+//            return DB::query('SELECT ENUM_RANGE(NULL::questiontopic)');
+            return DB::query('SELECT UNNEST(ENUM_RANGE(NULL::questiontopic))');
+        }
+        
         // etsii kysymyksen id-numeron perusteella
 	public static function find($id){
 		$rows = DB::query('SELECT * FROM Question WHERE id = :id LIMIT 1', array('id' => $id));

@@ -17,8 +17,18 @@
 
 <form method="post" action="{{base_path}}/add">
     <div class="form-group">
-        <label>Otsikko</label>
-        <input type="text" class="form-control" name="topic" value="{{question.topic}}">
+        <label>Aihepiiri</label>
+        <select class="form-control" name="topic">
+
+            {% for topic in topics %}
+                {% if question.topic == topic[0] %}
+                    <option selected>{{topic[0]}}</option>
+                {% else %}
+                    <option>{{topic[0]}}</option>
+                {% endif %}
+            {% endfor %}
+
+        </select>
     </div>
 
     <div class="form-group">

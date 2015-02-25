@@ -6,10 +6,12 @@ CREATE TABLE User_table(
         joined DATE
 );
 
+CREATE TYPE Questiontopic AS ENUM ('Opinnot', 'TKO-äly', 'UniCafe', 'Laitos', 'Henkilökunta', 'Muu');
+
 CREATE TABLE Question(
 	id SERIAL PRIMARY KEY,
 	user_id INTEGER REFERENCES User_table(id),
-	topic varchar(50) NOT NULL,
+	topic Questiontopic,
 	description varchar(400),
 	answered BOOLEAN,
 	added TIMESTAMP,
