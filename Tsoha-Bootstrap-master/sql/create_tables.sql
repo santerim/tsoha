@@ -3,7 +3,7 @@ CREATE TABLE User_table(
 	id SERIAL PRIMARY KEY,
 	username varchar(50) NOT NULL,
 	password varchar(50) NOT NULL,
-        joined DATE
+        joined DATE NOT NULL
 );
 
 CREATE TYPE Questiontopic AS ENUM ('Opinnot', 'TKO-äly', 'UniCafe', 'Laitos', 'Henkilökunta', 'Muu');
